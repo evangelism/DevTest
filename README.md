@@ -1,14 +1,8 @@
 # DevTest
 This repo contains files, documents and ARM templates for technical engagement project 
 
-## First
-### Very simple deployment of a Windows VM
+To simplify development process we are using Visual Studio Azure Resource Group Project type. 
+To use template you only need .json and *potentially* .ps1 file.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
-    <img src="http://armviz.io/visualizebutton.png"/>
-</a>
-
-This template allows you to deploy a simple Windows VM using a few different options for the Windows version, using the latest patched version. This will deploy a A2 size VM in the resource group location and return the fully qualified domain name of the VM.
+The idea of the template to deploy a base infrasturcture based on VMs to replicate current customer
+Dev&Tets envirnment and finnaly use Jenkins to autodeploy VMs and specific apps to test to VMs.
