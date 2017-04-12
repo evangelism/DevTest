@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\AzureRG"
+    "\\AzureRG",
+    "\\AzureRG\\DevTestRG"
   ],
-  "SelectedNode": "\\AzureRG",
+  "SelectedNode": "\\AzureRG\\DevTestRG\\DevTestRG.sln",
   "PreviewInSolutionExplorer": false
 }
