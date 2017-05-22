@@ -31,7 +31,6 @@
     <None Include="openWb.json" />
     <None Include="openWb.parameters.json" />
     <None Include="DeployTemplate.ps1" />
-    <None Include="openWbProd.parameters.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DSC\" />

@@ -27,7 +27,7 @@
      .\DeployTemplate.ps1 
 
 .Example
-     This example creates ‘Open-RG02’ resource group in West Europe region and starts deployment with the name ‘Open-RG-Dep02’.
+     This example creates 'Open-RG02' resource group in West Europe region and starts deployment with the name 'Open-RG-Dep02'.
 
      .\DeployTemplate.ps1 -ResourceGroupLocation 'westeurope' -DeployIndex '02' -ResourceGroupPrefix 'Open-RG' -AzureUserName 'admin@mytenant.onmicrosoft.com' -AzureUserPassword 'P@ssw0rd!@#$%' 
 #>
@@ -37,8 +37,8 @@ Param(
 	[string] $ResourceGroupLocation = "westeurope",
 	[string] $DeployIndex = "01",
 	[string] $ResourceGroupPrefix = "Open-RG",
-	[string] $AzureUserName = "admin@contosomsspb.onmicrosoft.com",
-	[string] $AzureUserPassword = "DMSVonashu26.@3!"
+	[string] $AzureUserName = "admin@mytenant.onmicrosoft.com",
+	[string] $AzureUserPassword = "P@ssw0rd!@#$%"
 )
 
 # Prepare credentials and login to Azure subscription. 
@@ -60,4 +60,4 @@ New-AzureRmResourceGroupDeployment -Name $DeploymentName `
                                        -ResourceGroupName $ResourceGroupName `
                                        -TemplateUri $TemplateUri `
                                        -TemplateParameterUri $TemplateParameterUri `
-                                       -Verbose `
+                                       -Verbose
