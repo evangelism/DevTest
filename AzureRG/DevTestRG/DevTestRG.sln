@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "DevTestRG", "DevTestRG\DevTestRG.deployproj", "{E67F8C7C-3065-4EA2-A62C-450393DC225E}"
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "open-wb-infra", "open-wb-infra\open-wb-infra.deployproj", "{C7970FFD-B8DD-4A79-BA56-1045F974B4A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E67F8C7C-3065-4EA2-A62C-450393DC225E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E67F8C7C-3065-4EA2-A62C-450393DC225E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E67F8C7C-3065-4EA2-A62C-450393DC225E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E67F8C7C-3065-4EA2-A62C-450393DC225E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7970FFD-B8DD-4A79-BA56-1045F974B4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7970FFD-B8DD-4A79-BA56-1045F974B4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7970FFD-B8DD-4A79-BA56-1045F974B4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7970FFD-B8DD-4A79-BA56-1045F974B4A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
