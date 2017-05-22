@@ -7,7 +7,7 @@
       "metadata": {
         "description": "Change this value to your repo name if deploying from a fork"
       },
-      "defaultValue": "https://raw.githubusercontent.com/ashapoms/open-wb/master/open-wb-infra/open-wb-infra/"
+      "defaultValue": "https://raw.githubusercontent.com/evangelism/DevTest/master/AzureRG/DevTestRG/open-wb-infra/"
     },
     "adminUsername": {
       "type": "string",
