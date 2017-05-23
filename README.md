@@ -18,5 +18,5 @@ All VMs except VM Scale Set will be deployed with public IP addresses. That allo
 To make deployment process easier you may use *DeployTemplate.ps1* script. For example this command will create 'Open-RG02' resource group in West Europe Azure region in appropriate tenant subscription and start deployment with the name 'Open-RG-Dep02':
 ```
 .\DeployTemplate.ps1 -ResourceGroupLocation 'westeurope' -DeployIndex '02' -ResourceGroupPrefix 'Open-RG' -AzureUserName '<tenant account name>' -AzureUserPassword '<tenant account password>'
-See comment section of DeployTemplate.ps1 file for more details.  
 ```
+See comment section of *DeployTemplate.ps1* file for more details.  
