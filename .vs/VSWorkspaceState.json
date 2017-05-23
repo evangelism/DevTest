@@ -4,6 +4,5 @@
     "\\AzureRG",
     "\\AzureRG\\DevTestRG"
   ],
-  "SelectedNode": "\\AzureRG\\DevTestRG\\DevTestRG.sln",
-  "PreviewInSolutionExplorer": false
+  "PreviewInSolutionExplorer": true
 }
