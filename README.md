@@ -3,7 +3,7 @@ This repo contains files, documents and ARM templates for the technical engageme
 
 The main idea of the template is deploying a base VM infrastructure to replicate current customer Dev&Test environment. Using the template with Jenkins can help to fully automate infrastructure deployment and specific apps testing.
 
-The template file [openWb.json] (AzureRG/DevTestRG/open-wb-infra/openWb.json) will create nine VMs in a workgroup. Roles, default number and sizes of the VMs are described below. To change the size of VM you need to adjust appropriate parameter in [*openWb.parameters.json*] (AzureRG/DevTestRG/open-wb-infra/openWb.parameters.json) file.
+The template file [openWb.json](AzureRG/DevTestRG/open-wb-infra/openWb.json) will create nine VMs in a workgroup. Roles, default number and sizes of the VMs are described below. To change the size of VM you need to adjust appropriate parameter in [*openWb.parameters.json*] (AzureRG/DevTestRG/open-wb-infra/openWb.parameters.json) file.
 
 | VM Name |	Description | Azure VM Size | # Cores/RAM (GB) |
 | :--- | :--- | :--- | :--- |
