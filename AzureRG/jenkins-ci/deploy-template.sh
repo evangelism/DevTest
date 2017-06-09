@@ -23,7 +23,7 @@ template_file="../DevTestRG/open-wb-infra/openWb.json"
 template_parameter_file="../DevTestRG/open-wb-infra/openWb.parameters.json"
 
 # Azure login with provided username and password
-az login --username $azure_username --password $azure_user_password
+#az login --username $azure_username --password $azure_user_password
 
 echo "Creating resource group: $resource_group_name"
 az group create \
