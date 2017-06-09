@@ -3,14 +3,15 @@
 # $ ./deploy-template.sh <azure_username> <azure_user_password>
 #
 
-if [[ !("$#" -eq 2) ]]; 
+if [[ !("$#" -eq 3) ]]; 
     then echo "Parameters are missing!" >&2
     exit 1
 fi
 
 #Prepare parameters  
 azure_username=$1
-azure_user_password=$2
+azure_password=$2
+azure_tenant=$3
 
 resource_group_location="westeurope"
 deploy_index="01"
@@ -22,8 +23,10 @@ deployment_name="${resource_group_prefix}-Dep${deploy_index}"
 template_file="../DevTestRG/open-wb-infra/openWb.json"
 template_parameter_file="../DevTestRG/open-wb-infra/openWb.parameters.json"
 
-# Azure login with provided username and password
-az login --username $azure_username --password $azure_user_password
+# Azure login with service principal
+az login --service-principal --username $azure_username \
+                             --password $azure_password \
+                             --tenant $azure_tenant
 
 echo "Creating resource group: $resource_group_name"
 az group create \
