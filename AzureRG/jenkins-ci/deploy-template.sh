@@ -30,12 +30,12 @@ az group create \
         --name $resource_group_name \
         --location $resource_group_location
 
-echo "Creating resource group: $resource_group_name"
-az group deployment create \
-        --name $deployment_name \
-        --resource-group $resource_group_name \
-        --template-file $template_file \
-        --parameters "@${template_parameter_file}" \
-        --verbose
+echo "Creating deployment: $deployment_name"
+#az group deployment create \
+#        --name $deployment_name \
+#        --resource-group $resource_group_name \
+#        --template-file $template_file \
+#        --parameters "@${template_parameter_file}" \
+#        --verbose
 
 echo "Done!"
