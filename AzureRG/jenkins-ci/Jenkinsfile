@@ -1,0 +1,32 @@
+pipeline {
+   agent any
+
+   properties([
+            parameters(
+                [   
+                    string(defaultValue: 'user@somedomain.com', description: 'Azure Account Username', name: 'azure_username'),
+                    string(defaultValue: 'org.onmicrosoft.com', description: 'Azure Tenant', name: 'azure_tenant'), 
+                    password(defaultValue: 'somepassword', description: 'Azure Account Password', name: 'azure_password')
+                ]
+            ), 
+            pipelineTriggers([])
+        ])
+
+    stage ('Cloning Azure template files') {
+        git branch: 'master', url: 'https://github.com/evangelism/DevTest.git'
+    }
+
+    stage ('Creating infrastructure with Azure Template') {
+        dir('AzureRG/jenkins-ci/') {
+          sh "./deploy-template.sh ${params.azure_username} ${params.azure_password} ${params.azure_tenant}"
+        }
+    }
+
+    stage ('Cloning Sample App') {
+        git branch: 'master', url: 'https://github.com/easkerov/DotNetSampleAppBinaries.git'
+    }
+
+    stage ('Publishing Sample App') {
+        sh "echo Hello World!"
+    }
+}
