@@ -1,6 +1,5 @@
 pipeline {
    agent any
-
     properties([
             parameters(
                 [   
@@ -19,7 +18,7 @@ pipeline {
     stage ('Creating infrastructure with Azure Template') {
         git branch: 'master', url: 'https://github.com/evangelism/DevTest.git'
         dir('AzureRG/jenkins-ci/') {
-          sh "./deploy-template.sh ${params.azure_username} ${params.azure_password} ${params.azure_tenant}"
+            sh "./deploy-template.sh ${params.azure_username} ${params.azure_password} ${params.azure_tenant}"
         }
     }
 
@@ -27,7 +26,7 @@ pipeline {
             dir('SampleApp') {
                 git branch: 'master', url: 'https://github.com/easkerov/DotNetSampleAppBinaries.git'
                 sh "rm -rf .git"
-                sh "wput --basename=$(pwd) ftp://${params.ftp_user}:${params.ftp_passwd}@${params.ftp_host}${params.ftp_remote_dir}"  
+                sh "wput --basename=`pwd` ftp://${params.ftp_user}:${params.ftp_passwd}@${params.ftp_host}${params.ftp_remote_dir}"  
         }
     }
 }

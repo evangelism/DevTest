@@ -24,6 +24,7 @@ template_file="../DevTestRG/open-wb-infra/openWb.json"
 template_parameter_file="../DevTestRG/open-wb-infra/openWb.parameters.json"
 
 # Azure login with service principal
+echo "Azure login for user: $azure_username"
 az login --service-principal --username $azure_username \
                              --password $azure_password \
                              --tenant $azure_tenant
