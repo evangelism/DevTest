@@ -1,32 +1,33 @@
 pipeline {
    agent any
 
-   properties([
+    properties([
             parameters(
                 [   
                     string(defaultValue: 'user@somedomain.com', description: 'Azure Account Username', name: 'azure_username'),
                     string(defaultValue: 'org.onmicrosoft.com', description: 'Azure Tenant', name: 'azure_tenant'), 
-                    password(defaultValue: 'somepassword', description: 'Azure Account Password', name: 'azure_password')
+                    password(defaultValue: 'somepassword', description: 'Azure Account Password', name: 'azure_password'),
+                    string(defaultValue: 'DotNetCoreSampleAppEA', description: 'FTP Account Username', name: 'ftp_user'),
+                    password(defaultValue: 'cC7shho87lvGvxmq7w5ARib2qNWcB4bk1YPoSrH8tps6y1bJZ2AeuALEg4Hy', description: 'FTP Account Password', name: 'ftp_passwd'),
+                    string(defaultValue: 'waws-prod-sn1-115.ftp.azurewebsites.windows.net', description: 'FTP Host', name: 'ftp_host'),
+                    string(defaultValue: '/site/wwwroot/', description: 'FTP Remote Dir', name: 'ftp_remote_dir')
                 ]
             ), 
             pipelineTriggers([])
         ])
-
-    stage ('Cloning Azure template files') {
-        git branch: 'master', url: 'https://github.com/evangelism/DevTest.git'
-    }
-
+ 
     stage ('Creating infrastructure with Azure Template') {
+        git branch: 'master', url: 'https://github.com/evangelism/DevTest.git'
         dir('AzureRG/jenkins-ci/') {
-          sh "./deploy-template.sh ${params.azure_username} ${params.azure_password} ${params.azure_tenant}"
+            sh "./deploy-template.sh ${params.azure_username} ${params.azure_password} ${params.azure_tenant}"
         }
     }
 
-    stage ('Cloning Sample App') {
-        git branch: 'master', url: 'https://github.com/easkerov/DotNetSampleAppBinaries.git'
-    }
-
     stage ('Publishing Sample App') {
-        sh "echo Hello World!"
+            dir('SampleApp') {
+                git branch: 'master', url: 'https://github.com/easkerov/DotNetSampleAppBinaries.git'
+                sh "rm -rf .git"
+                sh "wput --basename=${PWD} --force-tls ftp://${params.ftp_user}:${params.ftp_passwd}@${params.ftp_host}${params.ftp_remote_dir}"  
+        }
     }
 }
