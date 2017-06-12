@@ -14,7 +14,7 @@ azure_password=$2
 azure_tenant=$3
 
 resource_group_location="westeurope"
-deploy_index="02"
+deploy_index="01"
 resource_group_prefix="Open-RG"
 
 # Prepare environment variables  
@@ -35,6 +35,7 @@ az group create \
         --location $resource_group_location
 
 echo "Creating deployment: $deployment_name"
+echo -n "Please wait..."
 az group deployment create \
         --name $deployment_name \
         --resource-group $resource_group_name \
@@ -42,7 +43,6 @@ az group deployment create \
         --parameters "@${template_parameter_file}" \
         --no-wait
 
-echo -n "Please wait..."
 #When done - should be 'Succeeded'
 while : ; do
      state=$(az group deployment show \
