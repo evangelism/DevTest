@@ -49,7 +49,7 @@ while : ; do
 	        --name $deployment_name \
                 --resource-group $resource_group_name \
                 --query "properties.provisioningState")
-     if [ "$state" == "\"Running\"" ]; then
+     if [ "$state" == "\"Accepted\"" -o "$state" == "\"Running\"" ]; then
         echo -n "."           
         sleep 10
      else
