@@ -44,20 +44,20 @@ if [ $?  != 0 ]; then
 	exit 1
 fi
 
-echo "Starting deployment: ${deployment_name}..."
-#echo -n "Please wait..."
-az group deployment create \
-        --name $deployment_name \
-        --resource-group $resource_group_name \
-        --template-file $template_file \
-        --parameters "@${template_parameter_file}" \
-        --no-wait \
-        --verbose
+# echo "Starting deployment: ${deployment_name}..."
+# # echo -n "Please wait..."
+# az group deployment create \
+#         --name $deployment_name \
+#         --resource-group $resource_group_name \
+#         --template-file $template_file \
+#         --parameters "@${template_parameter_file}" \
+#        --no-wait \
+#         --verbose
 
-if [ $?  == 0 ];
- then
-	echo "Template has been successfully deployed"
-fi
+# if [ $?  == 0 ];
+#  then
+# 	echo "Template has been successfully deployed"
+# fi
 
 #When done - should be 'Succeeded'
 # while : ; do
