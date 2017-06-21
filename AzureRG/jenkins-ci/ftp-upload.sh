@@ -54,7 +54,7 @@ wput --basename=${BASENAME} ${BASENAME} ${URL}
 
 if [ $?  == 0 ];
  then
-	echo "Succesfully uploaded..."
+    echo "Succesfully uploaded..."
     exit 0
  else
     exit 1
