@@ -41,7 +41,8 @@ az group deployment create \
         --resource-group $resource_group_name \
         --template-file $template_file \
         --parameters "@${template_parameter_file}" \
-        --no-wait
+        --no-wait \
+        --verbose
 
 #When done - should be 'Succeeded'
 while : ; do
