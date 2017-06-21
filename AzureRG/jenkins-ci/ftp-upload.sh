@@ -26,6 +26,7 @@ urlencode() {
     done
 }
 
+# Remove trailing and leading quotes
 remove_quotes() {
     local string=${1#$"\""}
     echo ${string%$"\""}

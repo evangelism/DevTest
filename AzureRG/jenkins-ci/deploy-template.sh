@@ -61,19 +61,3 @@ if [ $?  == 0 ];
     exit 1
 fi
 
-#When done - should be 'Succeeded'
-# while : ; do
-#      state=$(az group deployment show \
-# 	        --name $deployment_name \
-#                 --resource-group $resource_group_name \
-#                 --query "properties.provisioningState")
-#      if [ "$state" == "\"Accepted\"" -o "$state" == "\"Running\"" ]; then
-#         echo -n "."           
-#         sleep 10
-#      else
-#         break
-#      fi
-# done
-
-# echo -e "\nDeployment status: ${state}"
-# echo "Done!"
