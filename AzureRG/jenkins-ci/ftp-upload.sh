@@ -51,7 +51,7 @@ BASENAME=$application_dir
 rm -rf $application_dir/.git/
 
 # Uploading files to remote dir
-wput --basename=${BASENAME} ${BASENAME} ${URL}
+wput --basename=${BASENAME} ${URL}
 
 if [ $?  == 0 ];
  then
