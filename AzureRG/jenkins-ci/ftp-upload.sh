@@ -35,11 +35,13 @@ remove_quotes() {
 parameter_file_dir=$1
 application_dir=$2
 parameter_file_path="${parameter_file_dir}/openWb.parameters.json"
+
 ftp_username=$(remove_quotes $(cat ${parameter_file_path} | jq '.parameters.adminUsername.value'))
 ftp_password=$(remove_quotes $(cat ${parameter_file_path} | jq '.parameters.adminPassword.value'))
 vm_hostname=$(remove_quotes $(cat ${parameter_file_path} | jq '.parameters.webMachineName.value'))
 ftp_hostname="${vm_hostname}.westeurope.cloudapp.azure.com"
 ftp_remote_dir="/"
+
 ENCODED_PASSWD=$(urlencode $ftp_password)
 URL="ftp://${ftp_username}:${ENCODED_PASSWD}@${ftp_hostname}${ftp_remote_dir}"
 BASENAME=$application_dir
@@ -49,3 +51,8 @@ rm -rf $application_dir/.git/
 
 # Uploading files to remote dir
 wput --basename=${BASENAME} ${BASENAME} ${URL}
+
+if [ $?  == 0 ];
+ then
+	echo "Succesfully uploaded..."
+fi
