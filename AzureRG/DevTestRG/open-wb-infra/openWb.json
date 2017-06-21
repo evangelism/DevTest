@@ -422,7 +422,10 @@
       "apiVersion": "2016-09-01",
       "location": "[resourceGroup().location]",
       "properties": {
-        "publicIPAllocationMethod": "Dynamic"
+        "publicIPAllocationMethod": "Dynamic",
+        "dnsSettings": {
+          "domainNameLabel": "[parameters('webMachineName')]"
+        }
       }
     },
     {
@@ -440,6 +443,45 @@
               "sourceAddressPrefix": "*",
               "protocol": "Tcp",
               "destinationPortRange": "3389",
+              "access": "Allow",
+              "direction": "Inbound",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*"
+            }
+          },
+          {
+            "name": "allow-ftp-control",
+            "properties": {
+              "priority": 1010,
+              "sourceAddressPrefix": "*",
+              "protocol": "Tcp",
+              "destinationPortRange": "21",
+              "access": "Allow",
+              "direction": "Inbound",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*"
+            }
+          },
+          {
+            "name": "allow-ftp-data",
+            "properties": {
+              "priority": 1020,
+              "sourceAddressPrefix": "*",
+              "protocol": "Tcp",
+              "destinationPortRange": "20",
+              "access": "Allow",
+              "direction": "Inbound",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*"
+            }
+          },
+          {
+            "name": "allow-ftp-passive",
+            "properties": {
+              "priority": 1030,
+              "sourceAddressPrefix": "*",
+              "protocol": "Tcp",
+              "destinationPortRange": "5000-5014",
               "access": "Allow",
               "direction": "Inbound",
               "sourcePortRange": "*",
