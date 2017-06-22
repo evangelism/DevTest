@@ -4,12 +4,8 @@ pipeline {
             parameters(
                 [   
                     string(defaultValue: '', description: 'Azure Account Username', name: 'azure_username'),
-                    string(defaultValue: '', description: 'Azure Tenant', name: 'azure_tenant'), 
                     password(defaultValue: '', description: 'Azure Account Password', name: 'azure_password'),
-                    string(defaultValue: '', description: 'FTP Account Username', name: 'ftp_user'),
-                    password(defaultValue: '', description: 'FTP Account Password', name: 'ftp_passwd'),
-                    string(defaultValue: '', description: 'FTP Host', name: 'ftp_host'),
-                    string(defaultValue: '', description: 'FTP Remote Dir', name: 'ftp_remote_dir')
+                    string(defaultValue: '', description: 'Azure Tenant', name: 'azure_tenant') 
                 ]
             ), 
             pipelineTriggers([])
@@ -23,10 +19,9 @@ pipeline {
     }
 
     stage ('Publishing Sample App') {
-            dir('SampleApp') {
-                git branch: 'master', url: 'https://github.com/easkerov/DotNetSampleAppBinaries.git'
-                sh "rm -rf .git"
-                sh "wput --basename=`pwd` ftp://${params.ftp_user}:${params.ftp_passwd}@${params.ftp_host}${params.ftp_remote_dir}"  
+        dir('SampleApp') {
+            git branch: 'master', url: 'https://github.com/easkerov/DotNetSampleAppBinaries.git'
+            sh "${WORKSPACE}/AzureRG/jenkins-ci/ftp-upload.sh ${WORKSPACE}/AzureRG/DevTestRG/open-wb-infra/ ${WORKSPACE}/SampleApp/"  
         }
     }
 }

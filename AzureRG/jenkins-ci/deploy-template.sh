@@ -29,33 +29,35 @@ az login --service-principal --username $azure_username \
                              --password $azure_password \
                              --tenant $azure_tenant
 
+if [ $?  != 0 ]; then
+	echo "Azure login failed..."
+	exit 1
+fi
+
 echo "Creating resource group: $resource_group_name"  
 az group create \
         --name $resource_group_name \
         --location $resource_group_location
 
-echo "Creating deployment: $deployment_name"
-echo -n "Please wait..."
+if [ $?  != 0 ]; then
+	echo "Resource group creation failed..."
+	exit 1
+fi
+
+echo "Starting deployment: ${deployment_name}..."
+# echo -n "Please wait..."
 az group deployment create \
         --name $deployment_name \
         --resource-group $resource_group_name \
         --template-file $template_file \
         --parameters "@${template_parameter_file}" \
-        --no-wait
+        --verbose
 
-#When done - should be 'Succeeded'
-while : ; do
-     state=$(az group deployment show \
-	        --name $deployment_name \
-                --resource-group $resource_group_name \
-                --query "properties.provisioningState")
-     if [ "$state" == "\"Accepted\"" -o "$state" == "\"Running\"" ]; then
-        echo -n "."           
-        sleep 10
-     else
-        break
-     fi
-done
+if [ $?  == 0 ];
+ then
+    echo "Template has been successfully deployed"
+    exit 0
+ else
+    exit 1
+fi
 
-echo -e "\nDeployment status: ${state}"
-echo "Done!"
