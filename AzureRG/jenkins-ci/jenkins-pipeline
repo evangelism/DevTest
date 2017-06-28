@@ -1,0 +1,26 @@
+node {
+    properties([
+            parameters(
+                [   
+                    string(defaultValue: '', description: 'Azure Account Username', name: 'azure_username'),
+                    password(defaultValue: '', description: 'Azure Account Password', name: 'azure_password'),
+                    string(defaultValue: '', description: 'Azure Tenant', name: 'azure_tenant') 
+                ]
+            ), 
+            pipelineTriggers([])
+        ])
+ 
+    stage ('Creating infrastructure with Azure Template') {
+        git branch: 'master', url: 'https://github.com/evangelism/DevTest.git'
+        dir('AzureRG/jenkins-ci/') {
+            sh "./deploy-template.sh ${params.azure_username} ${params.azure_password} ${params.azure_tenant}"
+        }
+    }
+
+    stage ('Publishing Sample App') {
+        dir('SampleApp') {
+            git branch: 'master', url: 'https://github.com/easkerov/DotNetSampleAppBinaries.git'
+            sh "${WORKSPACE}/AzureRG/jenkins-ci/ftp-upload.sh ${WORKSPACE}/AzureRG/DevTestRG/open-wb-infra/ ${WORKSPACE}/SampleApp/"  
+        }
+    }
+}
